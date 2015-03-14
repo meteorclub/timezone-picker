@@ -17,3 +17,13 @@ Template.timezonePicker.helpers({
       return 'selected';
   }
 });
+
+Template.timezonePicker.events({
+  'change select': function() {
+    Meteor.users.update(Meteor.userId(), {
+      $set: {
+        'profile.timezone': $('select').val()
+      }
+    });
+  }
+});
