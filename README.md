@@ -8,7 +8,7 @@ A meteor.js package that allows you to detect client-side timezones and gives yo
 
 Just run
 
-```
+```sh
 meteor add joshowens:timezone-picker
 ```
 
@@ -16,9 +16,9 @@ meteor add joshowens:timezone-picker
 
 Now we just have to add a startup block on the client to detect timezones:
 
-```
+```js
 // set the user's timezone
-Deps.autorun(function() {
+Tracker.autorun(function() {
   if (!Meteor.user().profile.timezone) {
     Meteor.users.update(Meteor.userId(), {$set: {
       'profile.timezone': TimezonePicker.detectedZone()
@@ -31,6 +31,17 @@ Then we can add a quick form field to a profile settings form:
 
 ```
 {{> timezonePicker class="form-group" selected=timezone}}
+```
+
+With this example helper:
+```js
+Template.profile.helpers({
+  // ...
+  timezone() {
+    return Meteor.user().profile.timezone;
+  }
+  // ...
+});
 ```
 
 This will inject a select element with all the available moment-timezone timezones as options.
