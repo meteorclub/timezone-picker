@@ -45,12 +45,12 @@
       "1.0.4"
     ],
     [
-      "mrt:moment",
-      "2.8.1"
+      "momentjs:moment",
+      "2.13.1"
     ],
     [
-      "mrt:moment-timezone",
-      "0.2.1"
+      "rgnevashev:moment-timezone",
+      "0.5.3_2"
     ],
     [
       "observe-sequence",
